@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParseExtension", "ParseExte
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CareersAnalyzer", "CareersAnalyzer\CareersAnalyzer.csproj", "{B13089DF-7B21-4047-9050-A4210A7784C5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebDriverExtensions", "WebDriverExtensions\WebDriverExtensions.csproj", "{7B747866-2242-41CB-83AA-08FA7C360D4F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,12 +31,17 @@ Global
 		{B13089DF-7B21-4047-9050-A4210A7784C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B13089DF-7B21-4047-9050-A4210A7784C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B13089DF-7B21-4047-9050-A4210A7784C5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B747866-2242-41CB-83AA-08FA7C360D4F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B747866-2242-41CB-83AA-08FA7C360D4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B747866-2242-41CB-83AA-08FA7C360D4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B747866-2242-41CB-83AA-08FA7C360D4F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{99279636-96F8-4287-AA59-2002D9569929} = {5E4BF2F2-0388-4095-8250-62D87CACBB52}
+		{7B747866-2242-41CB-83AA-08FA7C360D4F} = {5E4BF2F2-0388-4095-8250-62D87CACBB52}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {51984997-1C8B-403F-8317-38F2DC1C4FFB}

@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Globalization;
+
 
 namespace ParseExtension.String
 {
@@ -11,6 +9,8 @@ namespace ParseExtension.String
     {
         public static void TryParseAny(this string str, out decimal result)
         {
+            if (string.IsNullOrWhiteSpace(str))
+                throw new ArgumentNullException();
             result = -1;
             if (str.Contains(','))
                 str = str.Replace(',', '.');
