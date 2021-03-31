@@ -1,0 +1,6 @@
+CareersAnalyzer.exe count -fullscreen=true -language=Русский -role="Разработка тех. документации" -awaited=6 -close=false
+CareersAnalyzer.exe count -fullscreen=true -language=Русский -role="Разработка тех. документации" -awaited=6 -close=true
+CareersAnalyzer.exe count -fullscreen=true -language=Русский -role="Разработка тех. документации" -awaited=6
+CareersAnalyzer.exe count -fullscreen=true -language=Русский -language=Английский -role="Разработка тех. документации" -awaited=6 -close=false
+CareersAnalyzer.exe count -fullscreen=true -language=Английский -role="Разработка внутренних систем" -awaited=1 -close=false
+CareersAnalyzer.exe count -fullscreen=true -language=Английский -role="Разработка продуктов" -awaited=20 -close=false
