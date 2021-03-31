@@ -14,6 +14,11 @@ namespace WebDriverExtensions
     {
         public static void WaitElement(this IWebDriver driver, string xPath, int timeoutSec = 30) 
         {
+            if (string.IsNullOrWhiteSpace(xPath))
+                throw new ArgumentNullException();
+            if (timeoutSec <= 0)
+                throw new ArgumentNullException();
+
             while (timeoutSec > 0)
             {
                 try
@@ -32,6 +37,9 @@ namespace WebDriverExtensions
 
         public static void Scroll(this IWebDriver driver, string xPath) 
         {
+            if (string.IsNullOrWhiteSpace(xPath))
+                throw new ArgumentNullException();
+
             var element = driver.FindElement(By.XPath(xPath));
             Actions actions = new Actions(driver);
             actions.MoveToElement(element);
@@ -40,12 +48,18 @@ namespace WebDriverExtensions
 
         public static void ClickXp(this IWebDriver driver, string xPath) 
         {
+            if (string.IsNullOrWhiteSpace(xPath))
+                throw new ArgumentNullException();
+
             var elem = driver.FindElement(By.XPath(xPath));
             elem.Click();
         }
 
         public static int GetElementsCount(this IWebDriver driver, string criteria)
         {
+            if (string.IsNullOrWhiteSpace(criteria))
+                throw new ArgumentNullException();
+
             string content = driver.PageSource;
             Regex reg = new Regex(criteria);
             var mathCollections = reg.Matches(content);
