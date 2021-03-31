@@ -11,7 +11,7 @@ namespace CareersAnalyzer.Filters
 {
     class CareerVeemLanguage : IFilter
     {
-        public void Invoke(IWebDriver driver, string[] criteria)
+        public void Invoke(IWebDriver driver, params string[] criteria)
         {
             foreach (string lang in criteria) 
             {

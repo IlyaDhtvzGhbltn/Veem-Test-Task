@@ -11,8 +11,16 @@ namespace CareersAnalyzer.WebBrowserTasks
     abstract class SeleniunWebTask
     {
         protected Uri TargetUri;
+        protected string ChromeBrowserPath;
+        protected string WebDriverPath;
         protected IWebDriver driver;
 
-        public abstract void InitializeWebBrowser(string chromeExePath, string driverPath);
+        public SeleniunWebTask(string chromeBrowserPath, string webDriverPath)
+        {
+            ChromeBrowserPath = chromeBrowserPath;
+            WebDriverPath = webDriverPath;
+        }
+
+        public abstract void InitializeWebBrowser();
     }
 }

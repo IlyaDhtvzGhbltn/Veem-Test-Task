@@ -76,22 +76,22 @@ namespace CareersAnalyzer.WebBrowserTasks
         }
         #endregion
 
-        public VacansionCounting(string uriStr)
+        public VacansionCounting(string uriStr, string chromeBrowserPath, string webDriverPath) : base(chromeBrowserPath, webDriverPath)
         {
             TargetUri = new Uri(uriStr);
         }
-        public override void InitializeWebBrowser(string chromePath, string driverPath)
+        public override void InitializeWebBrowser()
         {
             var options = new ChromeOptions();
-            options.BinaryLocation = chromePath;
-            this.driver = new ChromeDriver(driverPath, options);
+            options.BinaryLocation = base.ChromeBrowserPath;
+            this.driver = new ChromeDriver(base.WebDriverPath, options);
         }
 
 
         public void Invoke(CommandLineApplication app) 
         {
             CommandOption fullScreenOpt = app.Option("-fullscreen", null, CommandOptionType.SingleValue);
-            CommandOption languageOpt = app.Option("-language", null, CommandOptionType.SingleValue);
+            CommandOption languageOpt = app.Option("-language", null, CommandOptionType.MultipleValue);
             CommandOption roleOpt = app.Option("-role", null, CommandOptionType.SingleValue);
             CommandOption awaitedOpt = app.Option("-awaited", null, CommandOptionType.SingleValue);
             CommandOption closeOpt = app.Option("-close", null, CommandOptionType.SingleOrNoValue);
@@ -102,11 +102,14 @@ namespace CareersAnalyzer.WebBrowserTasks
                 bool fullScreen = false;
                 bool closeWhenDone = false;
                 string role = roleOpt.Value();
-                string language = languageOpt.Value();
+                string[] language = languageOpt.Values.ToArray();
                 int.TryParse(awaitedOpt.Value(), out awaited);
 
                 bool.TryParse(closeOpt.Value(), out closeWhenDone);
                 bool.TryParse(fullScreenOpt.Value(), out fullScreen);
+
+                InitializeWebBrowser();
+
                 if (fullScreen)
                     driver.Manage().Window.Maximize();
                 driver.Navigate().GoToUrl(TargetUri);
@@ -115,16 +118,18 @@ namespace CareersAnalyzer.WebBrowserTasks
                 driver.Scroll(ClearFiltersXpath);
                 driver.ClickXp(LangXpath);
 
-                LangFilter.Invoke(driver, new string[] { language });
+                LangFilter.Invoke(driver, language);
                 driver.ClickXp(LangXpath);
                 driver.ClickXp(DepartsXpath);
 
-                DepartmentFilter.Invoke(driver, new string[] { role });
+                DepartmentFilter.Invoke(driver, role);
                 Count = driver.GetElementsCount(AwaliableVacansions);
 
-                TaskCompleted.Invoke(awaitedVacansionsCount: awaited, realVacansionsCount: Count);
+                if(TaskCompleted!= null)
+                    TaskCompleted.Invoke(awaitedVacansionsCount: awaited, realVacansionsCount: Count);
+                
                 if (closeWhenDone)
-                    driver.Close();
+                    driver.Dispose();
             });
         }
     }

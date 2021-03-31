@@ -9,7 +9,7 @@ namespace CareersAnalyzer.Filters
 {
     class CareerVeemeDepartment : IFilter
     {
-        public void Invoke(IWebDriver driver, string[] criteria)
+        public void Invoke(IWebDriver driver, params string[] criteria)
         {
             foreach (string dep in criteria) 
             {
