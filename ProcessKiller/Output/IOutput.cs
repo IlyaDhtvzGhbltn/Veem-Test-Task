@@ -8,6 +8,7 @@ namespace ProcessKiller.Output
 {
     interface IOutput
     {
-        void Write(string message);
+        void Information(string message);
+        void Error(string message);
     }
 }

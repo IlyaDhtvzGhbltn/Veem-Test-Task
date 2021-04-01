@@ -8,7 +8,14 @@ namespace ProcessKiller.Output
 {
     class ConsoleOut : IOutput
     {
-        public void Write(string message)
+        public void Error(string message)
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine(message);
+            Console.ForegroundColor = ConsoleColor.White;
+        }
+
+        public void Information(string message)
         {
             Console.WriteLine(message);
         }
