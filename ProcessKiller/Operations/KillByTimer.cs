@@ -45,7 +45,7 @@ namespace ProcessKiller.Operations
                 bool processExist = handler.Exist();
                 if (!processExist)
                 {
-                    outHandler.Write("Process was not found.");
+                    outHandler.Error(string.Format("Process '{0}' was not found.", process));
                 }
                 else
                 {
@@ -60,7 +60,7 @@ namespace ProcessKiller.Operations
                             process,
                             msecTimer / msecInSec);
 
-                        outHandler.Write(statusMessage);
+                        outHandler.Information(statusMessage);
                         msecTimer -= msecInterval;
 
                         Thread.Sleep(msecInterval);
@@ -74,9 +74,9 @@ namespace ProcessKiller.Operations
                     if (processExist)
                     {
                         handler.Kill();
-                        outHandler.Write("Killing...");
+                        outHandler.Information("Killing...");
                     }
-                    outHandler.Write("Process was killed.");
+                    outHandler.Information(string.Format("{0} was killed.", process));
                 }
             });
         }
